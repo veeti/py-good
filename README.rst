@@ -2017,6 +2017,15 @@ Capitalizes the input string.
 
 Casts The Input String To Title Case
 
+``Strip``
+~~~~~~~~~
+
+.. code:: python
+
+    Strip()
+
+Strips leading and following whitespace from the input string.
+
 ``Match``
 ~~~~~~~~~
 

@@ -58,6 +58,12 @@ def Title():
     return 'title'
 
 
+@stringmethod
+def Strip():
+    """ Strips leading and following whitespace from the input string."""
+    return 'strip'
+
+
 class Match(ValidatorBase):
     """ Validate the input string against a regular expression.
 
@@ -255,4 +261,4 @@ class Email(Match):
         super(Email, self).__init__(self._rex, u'Invalid E-Mail', u'E-Mail')
 
 
-__all__ = ('Lower', 'Upper', 'Capitalize', 'Title', 'Match', 'Replace', 'Url', 'Email')
+__all__ = ('Lower', 'Upper', 'Capitalize', 'Title', 'Strip', 'Match', 'Replace', 'Url', 'Email')

@@ -1972,6 +1972,18 @@ Casts The Input String To Title Case
 
 
 
+### `Strip`
+```python
+Strip()
+```
+
+Strips leading and following whitespace from the input string.
+
+
+
+
+
+
 ### `Match`
 ```python
 Match(pattern, message=None, expected=None)

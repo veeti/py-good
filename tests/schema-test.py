@@ -1338,7 +1338,7 @@ class StringsTest(GoodTestBase):
     """ Test: Validators.Strings """
 
     def test_Lower_and_co(self):
-        """ Test: Lower(), Upper(), Capitalize(), Title() """
+        """ Test: Lower(), Upper(), Capitalize(), Title(), Strip() """
 
         schema = Schema(Lower())
         self.assertValid(schema, u'ABC DEF', u'abc def')
@@ -1351,6 +1351,9 @@ class StringsTest(GoodTestBase):
 
         schema = Schema(Title())
         self.assertValid(schema, u'abc def', u'Abc Def')
+
+        schema = Schema(Strip())
+        self.assertValid(schema, u' \tabc def\t ', u'abc def')
 
     def test_Match(self):
         """ Test Match() """
