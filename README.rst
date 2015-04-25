@@ -107,6 +107,7 @@ Table of Contents
       -  Upper
       -  Capitalize
       -  Title
+      -  NotEmpty
       -  Match
       -  Replace
       -  Url
@@ -2016,6 +2017,32 @@ Capitalizes the input string.
     Title()
 
 Casts The Input String To Title Case
+
+``NotEmpty``
+~~~~~~~~~~~~
+
+.. code:: python
+
+    NotEmpty(message=None)
+
+Checks that the string is not empty.
+
+.. code:: python
+
+    from good import Schema, NotEmpty
+
+    schema = Schema(All(
+        unicode,
+        NotEmpty()
+    ))
+
+    schema('Hello, world')  #-> 'Hello, world'
+    schema('')
+    #-> Invalid: Can't be empty
+
+Arguments:
+
+-  ``message``: Error message override
 
 ``Match``
 ~~~~~~~~~

@@ -88,6 +88,7 @@ Table of Contents
         * <a href="#upper">Upper</a>
         * <a href="#capitalize">Capitalize</a>
         * <a href="#title">Title</a>
+        * <a href="#notempty">NotEmpty</a>
         * <a href="#match">Match</a>
         * <a href="#replace">Replace</a>
         * <a href="#url">Url</a>
@@ -1967,6 +1968,34 @@ Title()
 
 Casts The Input String To Title Case
 
+
+
+
+
+
+### `NotEmpty`
+```python
+NotEmpty(message=None)
+```
+
+Checks that the string is not empty.
+
+```python
+from good import Schema, NotEmpty
+
+schema = Schema(All(
+    unicode,
+    NotEmpty()
+))
+
+schema('Hello, world')  #-> 'Hello, world'
+schema('')
+#-> Invalid: Can't be empty
+```
+
+Arguments:
+
+* `message`: Error message override
 
 
 

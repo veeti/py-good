@@ -58,6 +58,43 @@ def Title():
     return 'title'
 
 
+class NotEmpty(ValidatorBase):
+    """ Checks that the string is not empty.
+
+    ```python
+    from good import Schema, NotEmpty
+
+    schema = Schema(All(
+        unicode,
+        NotEmpty()
+    ))
+
+    schema('Hello, world')  #-> 'Hello, world'
+    schema('')
+    #-> Invalid: Can't be empty
+    ```
+
+    :param message: Error message override
+    :type message: unicode
+    """
+
+    name = u'not empty'
+
+    def __init__(self, message=None):
+        self.message = message or _(u'Can\'t be empty')
+
+    def __call__(self, v):
+        # Is a string?
+        if not isinstance(v, six.string_types):
+            raise Invalid(_(u'Not a string'), get_type_name(six.text_type), get_type_name(type(v)))
+
+        # Empty?
+        if not len(v):
+            raise Invalid(self.message, expected=None, provided=v)
+
+        return v
+
+
 class Match(ValidatorBase):
     """ Validate the input string against a regular expression.
 
@@ -255,4 +292,4 @@ class Email(Match):
         super(Email, self).__init__(self._rex, u'Invalid E-Mail', u'E-Mail')
 
 
-__all__ = ('Lower', 'Upper', 'Capitalize', 'Title', 'Match', 'Replace', 'Url', 'Email')
+__all__ = ('Lower', 'Upper', 'Capitalize', 'Title', 'NotEmpty', 'Match', 'Replace', 'Url', 'Email')

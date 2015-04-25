@@ -1352,6 +1352,20 @@ class StringsTest(GoodTestBase):
         schema = Schema(Title())
         self.assertValid(schema, u'abc def', u'Abc Def')
 
+    def test_NotEmpty(self):
+        """ Test NotEmpty() """
+
+        not_empty = NotEmpty()
+        schema = Schema(not_empty)
+
+        self.assertValid(schema, u'Hello, world')
+        self.assertValid(schema, u' ')
+
+        self.assertInvalid(schema, u'',
+                           Invalid(u'Can\'t be empty', u'not empty', u'', None, not_empty))
+        self.assertInvalid(schema, 123,
+                           Invalid(u'Not a string', u'String', s.t_int, [], not_empty))
+
     def test_Match(self):
         """ Test Match() """
 
